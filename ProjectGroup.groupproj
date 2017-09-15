@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{37A0A11F-8CFE-4A4D-AA53-C47C0F7D7559}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Integral.dproj">
+            <Dependencies>MathParserDll.cbproj</Dependencies>
+        </Projects>
+        <Projects Include="MathParserDll.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Integral" DependsOnTargets="MathParserDll">
+        <MSBuild Projects="Integral.dproj"/>
+    </Target>
+    <Target Name="Integral:Clean" DependsOnTargets="MathParserDll:Clean">
+        <MSBuild Projects="Integral.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Integral:Make" DependsOnTargets="MathParserDll:Make">
+        <MSBuild Projects="Integral.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MathParserDll">
+        <MSBuild Projects="MathParserDll.cbproj"/>
+    </Target>
+    <Target Name="MathParserDll:Clean">
+        <MSBuild Projects="MathParserDll.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MathParserDll:Make">
+        <MSBuild Projects="MathParserDll.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Integral;MathParserDll"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Integral:Clean;MathParserDll:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Integral:Make;MathParserDll:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
