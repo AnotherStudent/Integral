@@ -1,4 +1,20 @@
 # Integral
-Sample the application which calculates integral used three using three different methods
-
 ![screenshot](screenshot.png) 
+
+Пример простого приложения вычисляющего интеграл тремя разными методами.
+
+Вы можете задать свою подинтегральную функцию, в выражении доступны следующие функции:
+* sin(...)
+* cos(...)
+* tan(...)
+* asin(...)
+* acos(...)
+* atan(...)
+* log(...)
+* exp(...)
+* sqrt(...)
+* abs(...)
+* pi
+* n!
+* x^y
+
